@@ -1,0 +1,21 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+public class Win_scr2 : MonoBehaviour
+{
+    public GameObject panel;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Player") == true)
+        {
+            panel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+    public void mew()
+    {
+        SceneManager.LoadScene(4);
+        Global.nxtLevel = 0;
+        if (Global.nxtLevel > PlayerPrefs.GetInt("curLVL"))
+            PlayerPrefs.SetInt("curLVL", Global.nxtLevel);
+    }
+}
